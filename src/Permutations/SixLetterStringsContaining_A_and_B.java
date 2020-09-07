@@ -1,3 +1,5 @@
+// © 2020 Mahmoud Darwish All Rights Reserved
+
 package Permutations;
 
 import java.util.ArrayList;
