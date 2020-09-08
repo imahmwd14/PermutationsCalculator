@@ -21,8 +21,11 @@ public class SixLetterStringsContaining_A_and_B {
     public static void main(String[] args) {
         // here the process of calculating the six letter strings containing an a and a b is started
         permute(lengthOfStrings, new ArrayList<>());
+
         // here, after the program finishes the calculation, it prints the number of strings containing an a and a b
-        System.out.println(permutations.size());
+        System.out.println();
+        System.out.println("Finished checking all permutations");
+        System.out.printf("There are %d permutations of %d letter strings that contain both an a and a b %n", permutations.size(), lengthOfStrings);
     }
 
     private static void permute(int depth, ArrayList<Character> nthPermutation) {
@@ -34,9 +37,18 @@ public class SixLetterStringsContaining_A_and_B {
         // as long as the depth is greater than 0, then there are still many more permutations to calculate
         if (depth > 0)
             for (char i = 'a'; i <= 'z'; i++) {
+                // letting the user know about the progress of the calculations
+                if (depth == lengthOfStrings) {
+                    System.out.printf("Calculating permutations of %d letter strings starting with: %c %n", lengthOfStrings, i);
+                    System.out.printf("Calculation progress: %d%% %n", (int) (((i - 'a') / 26.0) * 100));
+                }
+
+
                 // a copy must be created to avoid using the same array when calculating new permutations
                 ArrayList<Character> nthPermutationCopy = new ArrayList<>(nthPermutation);
                 nthPermutationCopy.add(i);
+
+
                 // here the method is called to continue recursively calculating the rest of the permutations
                 permute(depth - 1, nthPermutationCopy);
             }
