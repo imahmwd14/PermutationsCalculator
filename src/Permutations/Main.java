@@ -10,7 +10,7 @@ public class Main {
 
         stringsPermutationsGenerator.setStart('y');
 
-        stringsPermutationsGenerator.showProgressMessage(true);
+        // stringsPermutationsGenerator.showProgressMessage(true);
 
         stringsPermutationsGenerator.fillWithPermutations(permutations);
 
