@@ -4,6 +4,7 @@ package Permutations;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class SixLetterStringsContaining_A_and_B {
@@ -16,7 +17,7 @@ public class SixLetterStringsContaining_A_and_B {
     static List<Character> aAndB = Arrays.asList('a', 'b');
 
     // here is specified the length of the strings that we want to permute
-    static int lengthOfStrings = 6;
+    static int lengthOfStrings = 5;
 
     public static void main(String[] args) {
         // here the process of calculating the six letter strings containing an a and a b is started
@@ -39,8 +40,11 @@ public class SixLetterStringsContaining_A_and_B {
             for (char i = 'a'; i <= 'z'; i++) {
                 // letting the user know about the progress of the calculations
                 if (depth == lengthOfStrings) { /*if we are at the outer most loop*/
+
+                    int calculationProgress = (int) (((i - 'a') / 26.0) * 100);
+
                     System.out.printf("Calculating permutations of %d letter strings starting with: %c %n", lengthOfStrings, i);
-                    System.out.printf("Calculation progress: %d%% %n", (int) (((i - 'a') / 26.0) * 100));
+                    System.out.printf("Calculation progress: %d%% %n", calculationProgress);
                     System.out.printf("Number of permutations so far: %d %n", permutations.size());
                 }
 
