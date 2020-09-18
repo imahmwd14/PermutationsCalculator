@@ -38,9 +38,10 @@ public class SixLetterStringsContaining_A_and_B {
         if (depth > 0)
             for (char i = 'a'; i <= 'z'; i++) {
                 // letting the user know about the progress of the calculations
-                if (depth == lengthOfStrings) {
+                if (depth == lengthOfStrings) { /*if we are at the outer most loop*/
                     System.out.printf("Calculating permutations of %d letter strings starting with: %c %n", lengthOfStrings, i);
                     System.out.printf("Calculation progress: %d%% %n", (int) (((i - 'a') / 26.0) * 100));
+                    System.out.printf("Number of permutations so far: %d %n", permutations.size());
                 }
 
 
