@@ -17,7 +17,7 @@ public class SixLetterStringsContaining_A_and_B {
     static List<Character> aAndB = Arrays.asList('a', 'b');
 
     // here is specified the length of the strings that we want to permute
-    static int lengthOfStrings = 5;
+    static int lengthOfStrings = 6;
 
     public static void main(String[] args) {
         // here the process of calculating the six letter strings containing an a and a b is started
