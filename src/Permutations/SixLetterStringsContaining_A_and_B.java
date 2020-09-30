@@ -6,22 +6,33 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class SixLetterStringsContaining_A_and_B {
 
     // here we add every permutation that has an a and a b
-    static ArrayList<ArrayList<Character>> permutations = new ArrayList<>();
+    static ArrayList<List<Character>> permutations = new ArrayList<>();
 
-    // this list is made static to prevent the creation of the same list over and over
-    // every time we check a permutation whether it has an a and a b.
+    /*
+     * this list is made static to prevent the creation of the same list over and over
+     * every time we check a permutation whether it has an a and a b.
+     */
     static List<Character> aAndB = Arrays.asList('a', 'b');
 
     // here is specified the length of the strings that we want to permute
     static int lengthOfStrings = 6;
 
     public static void main(String[] args) {
+        /*
+         * a list to store the nthPermutation temporarily is created to prevent the creation of lists over and over.
+         * the size of the list will be equal to @lengthOfStrings.
+         * */
+        List<Character> nthPermutation = IntStream.range(0, lengthOfStrings)
+                .mapToObj(value -> ' ').collect(Collectors.toList());
+
         // here the process of calculating the six letter strings containing an a and a b is started
-        permute(lengthOfStrings, new ArrayList<>());
+        permute(lengthOfStrings, nthPermutation);
 
         // here, after the program finishes the calculation, it prints the number of strings containing an a and a b
         System.out.println();
@@ -29,9 +40,11 @@ public class SixLetterStringsContaining_A_and_B {
         System.out.printf("There are %d permutations of %d letter strings that contain both an a and a b %n", permutations.size(), lengthOfStrings);
     }
 
-    private static void permute(int depth, ArrayList<Character> nthPermutation) {
-        // if the depth is equal to 0, then we'd have reached a leaf of the recursion tree, which means that
-        // a full permutation has been calculated
+    private static void permute(int depth, List<Character> nthPermutation) {
+        /*
+         * if the depth is equal to 0, then we'd have reached a leaf of the recursion tree, which means that
+         * a full permutation has been calculated
+         */
         if (depth == 0 && nthPermutation.containsAll(aAndB))
             permutations.add(nthPermutation);
 
@@ -50,12 +63,11 @@ public class SixLetterStringsContaining_A_and_B {
 
 
                 // a copy must be created to avoid using the same array when calculating new permutations
-                ArrayList<Character> nthPermutationCopy = new ArrayList<>(nthPermutation);
-                nthPermutationCopy.add(i);
+                nthPermutation.set(depth - 1, i);
 
 
                 // here the method is called to continue recursively calculating the rest of the permutations
-                permute(depth - 1, nthPermutationCopy);
+                permute(depth - 1, nthPermutation);
             }
     }
 }
